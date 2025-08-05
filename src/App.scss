@@ -1,14 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;700&display=swap');
+
+/* Variaveis para padronizar cores e fontes */
+$color-spiderman-red: #C40000;
+$color-spiderman-blue: #0A0A10;
+$color-spiderman-highlight: #FFD700;
+$color-spiderman-text: #FFFFFF;
+$color-dark-gray: #333;
+$color-light-gray: #f0f0f0;
+
+/* Cores e fontes do Comic */
+$font-comic-title: 'Bangers', cursive;
+$font-comic-body: 'Roboto', sans-serif;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-comic-body;
+  background-color: $color-spiderman-blue;
+}
 
 .container {
   display: flex;
+  height: 100vh;
+  /* Removido o overflow: hidden; para evitar problemas de rolagem */
 }
+
+/* Sidebar: agora fixa e com z-index para ficar sempre à frente */
+.sidebar {
+  width: 250px; /* Largura fixa para a sidebar */
+  background-color: $color-spiderman-blue;
+  height: 100vh;
+  padding: 30px 20px;
+  color: white;
+  position: fixed; /* Mantenha a posição fixa para que ela não se mova */
+  z-index: 1000; /* Garante que ela esteja sempre na camada superior */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+  border-right: 5px solid $color-spiderman-red;
+}
+
+/* Main: agora com a margem correta e sem a responsabilidade de ser flexbox */
 main {
-  margin-left: 220px;
-  padding: 20px;
   flex: 1;
-  background: #f0f0f0;
+  margin-left: 250px; /* A margem esquerda aqui é essencial para empurrar o conteúdo principal para o lado, liberando espaço para a sidebar fixa */
+  padding: 40px;
+  background: $color-light-gray;
   min-height: 100vh;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
 }
-.page h1 {
-  color: #c40000;
+
+.page {
+  /* O estilo da página principal agora é mais um "wrapper" */
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+
+  h1 {
+    font-family: $font-comic-title;
+    font-size: 3rem;
+    color: $color-spiderman-red;
+    text-shadow: 2px 2px $color-spiderman-blue;
+    margin-bottom: 20px;
+  }
+}
+
+.content-box, .autor-container, .audience-grid, .colega-card {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  border: 2px solid $color-dark-gray;
+}
+
+.sinopse-page {
+  .fact-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: $color-spiderman-red;
+    color: white;
+    border-radius: 8px;
+    h3 {
+      font-family: $font-comic-title;
+      margin: 0;
+    }
+  }
+}
+
+.autor-page {
+  .autor-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .autor-card {
+    padding: 20px;
+    background-color: #f9f9f9;
+    h2 {
+      color: $color-dark-gray;
+    }
+    .nickname {
+      font-family: $font-comic-body;
+      font-size: 1rem;
+      color: gray;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      li {
+        margin-bottom: 5px;
+      }
+      i {
+        margin-right: 10px;
+        color: $color-spiderman-red;
+      }
+    }
+  }
+}
+
+.publico-alvo-page {
+  .subtitle {
+    font-size: 1.2rem;
+    color: $color-dark-gray;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    .audience-card {
+      text-align: center;
+      i {
+        font-size: 3rem;
+        color: $color-spiderman-red;
+        margin-bottom: 15px;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .age-rating {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+    background-color: $color-spiderman-red;
+    color: $color-spiderman-text;
+    border-radius: 5px;
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+.colega-page {
+  .colega-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    p {
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+  }
+  .spidey-icon-wrapper {
+    margin-top: 20px;
+    i {
+      font-size: 4rem;
+      color: $color-spiderman-red;
+      transform: rotate(-20deg);
+    }
+    .spidey-greetings {
+      font-family: $font-comic-title;
+      color: $color-dark-gray;
+      font-size: 2rem;
+      margin-top: 10px;
+    }
+  }
 }
