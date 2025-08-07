@@ -1,99 +1,149 @@
 /* Variaveis para padronizar cores e fontes */
 $color-spiderman-red: #C40000;
-$color-spiderman-blue: #0A0A10; // Azul escuro para contraste
-$color-spiderman-highlight: #FFD700; // Dourado/amarelo para destaque
+$color-spiderman-blue: #0A0A10;
+$color-spiderman-highlight: #FFD700;
 $color-spiderman-text: #FFFFFF;
 $font-family-marvel: 'Roboto', 'Arial', sans-serif;
-$font-family-title: 'Bangers', cursive; // Tipica fonte de quadrinhos, é uma sugestão!
+$font-family-title: 'Bangers', cursive;
 
+/* Gradiente de fundo sutil para um efeito mais dinâmico */
 .sidebar {
-  width: 250px; // Aumentei um pouco a largura para caber os ícones e texto
-  background-color: $color-spiderman-blue; // Fundo azul escuro para um contraste forte
+  width: 250px;
+  background: linear-gradient(180deg, $color-spiderman-blue 0%, lighten($color-spiderman-blue, 5%) 100%);
   height: 100vh;
-  padding: 30px 20px; // Aumentei o padding para dar mais espaço
+  padding: 30px 20px;
   color: $color-spiderman-text;
   position: fixed;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; // Centraliza e distribui o conteúdo
-  align-items: center; // Centraliza os itens horizontalmente
-  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5); // Sombra para dar profundidade
-  
-  /* Gradiente na borda para um efeito visual de teia ou energia */
+  justify-content: space-between; // Voltamos a usar space-between
+  align-items: center;
+  box-shadow: 5px 0 20px rgba(0, 0, 0, 0.7);
   border-right: 5px solid $color-spiderman-red;
+  overflow: hidden;
 }
 
-/* Container para as logos */
+/* Container para a logo com um contorno de energia */
 .logo-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 50px; // Aumentamos a margem inferior para dar mais espaço
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 3px solid transparent;
+    border-image: linear-gradient(45deg, $color-spiderman-red, $color-spiderman-highlight);
+    border-image-slice: 1;
+    border-radius: 15px;
+    animation: glow-border 2s infinite alternate;
+  }
+}
+
+/* Animação para o contorno da logo */
+@keyframes glow-border {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
 }
 
 .marvel-logo {
-  width: 150px; /* Tamanho da logo da Marvel */
+  width: 150px;
+  filter: drop-shadow(0 0 10px rgba($color-spiderman-red, 0.5));
 }
 
-.spiderman-icon {
-  width: 60px; /* Tamanho do ícone do Homem-Aranha */
-  animation: pulse 2s infinite; /* Animação sutil para dar vida ao ícone */
-}
-
-/* Animação para o ícone do Homem-Aranha */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-/* Menu de navegação */
+/* Menu de navegação com bordas mais definidas */
 .sidebar nav {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  width: 100%;
+  gap: 15px; // Voltamos ao espaçamento anterior
+  width: 90%;
 }
 
 .sidebar nav a {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
   color: $color-spiderman-text;
   text-decoration: none;
   font-family: $font-family-marvel;
   font-weight: 500;
   font-size: 1.1rem;
-  padding: 10px 15px;
-  border-radius: 8px;
-  transition: all 0.3s ease; // Transição suave ao passar o mouse
+  padding: 12px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
   
   &:hover {
-    background-color: rgba($color-spiderman-red, 0.8);
-    transform: translateX(10px); // Efeito de deslize ao passar o mouse
+    background-color: rgba($color-spiderman-red, 0.9);
+    transform: translateX(10px) scale(1.02);
     color: $color-spiderman-highlight;
+    border-color: $color-spiderman-highlight;
   }
 
   &.active {
     background-color: $color-spiderman-red;
     font-weight: bold;
     color: $color-spiderman-highlight;
-    box-shadow: 0 0 15px rgba($color-spiderman-red, 0.7); // Efeito de brilho para a página ativa
+    box-shadow: 0 0 15px rgba($color-spiderman-red, 0.7);
+    border-color: $color-spiderman-highlight;
   }
 }
 
-/* Ícones dentro dos links */
+/* Ícones com efeito de brilho e animação */
 .sidebar nav a i {
-  font-size: 1.3rem;
-  width: 20px;
+  font-size: 1.5rem;
+  width: 25px;
+  transition: all 0.3s ease;
+  
+  .active & {
+    color: $color-spiderman-highlight;
+    text-shadow: 0 0 5px $color-spiderman-highlight;
+  }
 }
 
-/* Detalhe de teia no fundo ou em uma posição específica */
+/* Detalhe de teia no fundo, agora com um ajuste de margem */
 .spiderweb-detail {
   width: 100%;
-  height: 100px;
-  background: url('https://example.com/spiderweb-pattern.svg') no-repeat center bottom;
+  height: 200px;
+  background: url('/spiderweb-pattern.svg') no-repeat center bottom;
   background-size: contain;
-  opacity: 0.3; // Opacidade baixa para ser um detalhe sutil
+  opacity: 0.15;
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  z-index: -1;
+  animation: float-up 10s infinite alternate;
+}
+
+@keyframes float-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-20px); }
+}
+
+/* NOVO: Estilo para o container da imagem do Homem-Aranha */
+.spiderman-image-container {
+    width: 100%;
+    margin: 30px 0; /* Espaçamento vertical para a imagem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spiderman-sidebar-img {
+    width: 100px; /* Tamanho da imagem, você pode ajustar */
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba($color-spiderman-highlight, 0.5));
+    animation: pulse 4s infinite alternate; /* Adiciona uma animação sutil */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
 }

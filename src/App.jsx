@@ -4,7 +4,7 @@ import Sidebar from "./components/Sidebar";
 import Sinopse from "./pages/Sinopse";
 import Autor from "./pages/Autor";
 import PublicoAlvo from "./pages/PublicoAlvo";
-import Colega from "./pages/Colega";
+import Kelvin from "./pages/Kelvin";
 import "./App.scss";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
             <Route path="/" element={<Sinopse />} />
             <Route path="/autor" element={<Autor />} />
             <Route path="/publico-alvo" element={<PublicoAlvo />} />
-            <Route path="/colega" element={<Colega />} />
+            <Route path="/Kelvin" element={<Kelvin />} />
           </Routes>
         </main>
       </div>
