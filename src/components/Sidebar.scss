@@ -23,28 +23,6 @@ $font-family-title: 'Bangers', cursive;
   overflow: hidden;
 }
 
-/* Container para a logo com um contorno de energia */
-.logo-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 50px; // Aumentamos a margem inferior para dar mais espaço
-  position: relative;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    border: 3px solid transparent;
-    border-image: linear-gradient(45deg, $color-spiderman-red, $color-spiderman-highlight);
-    border-image-slice: 1;
-    border-radius: 15px;
-    animation: glow-border 2s infinite alternate;
-  }
-}
 
 /* Animação para o contorno da logo */
 @keyframes glow-border {
@@ -95,17 +73,7 @@ $font-family-title: 'Bangers', cursive;
   }
 }
 
-/* Ícones com efeito de brilho e animação */
-.sidebar nav a i {
-  font-size: 1.5rem;
-  width: 25px;
-  transition: all 0.3s ease;
-  
-  .active & {
-    color: $color-spiderman-highlight;
-    text-shadow: 0 0 5px $color-spiderman-highlight;
-  }
-}
+
 
 /* Detalhe de teia no fundo, agora com um ajuste de margem */
 .spiderweb-detail {

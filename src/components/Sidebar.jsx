@@ -8,9 +8,21 @@ export default function Sidebar() {
         <div className="logo-container">
           <img src="/compose.webp" alt="Marvel Logo" className="marvel-logo" />
         </div>
-        
-        {/* NOVO: Espaço para a imagem do Homem-Aranha */}
+       
+      </div>
+
+
+       {/* NOVO: Espaço para a imagens */}
         <div className="spiderman-image-container">
+          <img src="/hulk.webp" alt="Homem-Aranha" className="spiderman-sidebar-img" />
+        </div>
+
+
+       <div className="spiderman-image-container">
+          <img src="/aaaaa.webp" alt="Homem-Aranha" className="spiderman-sidebar-img" />
+        </div>
+
+       <div className="spiderman-image-container">
           <img src="/pppp.webp" alt="Homem-Aranha" className="spiderman-sidebar-img" />
         </div>
 
@@ -28,7 +40,7 @@ export default function Sidebar() {
             <i className="fas fa-user-friends"></i> Kelvin
           </NavLink>
         </nav>
-      </div>
+        
 
       <div className="spiderweb-detail"></div>
     </div>
