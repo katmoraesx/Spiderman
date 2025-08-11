@@ -4,10 +4,8 @@ export default function Autor() {
       <h1 className="title-comic"><i className="fas fa-pen-nib"></i> Os Mestres da Marvel</h1>
       <div className="autor-container">
         
-        {/* Card do Stan Lee com imagem */}
         <div className="autor-card stan-lee-card">
           <div className="autor-image-container">
-            {/* Espaço para a imagem do Stan Lee */}
             <img src="/stanlee.jfif" alt="Stan Lee" className="autor-image" />
           </div>
           <div className="autor-content">
@@ -24,10 +22,8 @@ export default function Autor() {
           </div>
         </div>
         
-        {/* Card do Steve Ditko com imagem */}
         <div className="autor-card steve-ditko-card">
           <div className="autor-image-container">
-            {/* Espaço para a imagem do Steve Ditko */}
             <img src="/steve.jpg" alt="Steve Ditko" className="autor-image" />
           </div>
           <div className="autor-content">
@@ -42,11 +38,9 @@ export default function Autor() {
         
       </div>
 
-      {/* --- Nova Seção para Outras Obras --- */}
       <h2 className="title-comic other-works-title"><i className="fas fa-book-open"></i> Outras Obras dos Mestres</h2>
       
       <div className="other-works-container">
-        {/* Card de Compra para "Quarteto Fantástico" */}
         <div className="book-purchase-card">
           <img src="/quarteto.jfif" alt="Quarteto Fantástico" className="book-cover" />
           <div className="book-details">
@@ -58,7 +52,6 @@ export default function Autor() {
           </div>
         </div>
 
-        {/* Card de Compra para "Hulk" */}
         <div className="book-purchase-card">
           <img src="/hulk.jfif" alt="O Incrível Hulk" className="book-cover" />
           <div className="book-details">
@@ -71,7 +64,6 @@ export default function Autor() {
         </div>
 
 
-         {/* Card de Compra para "X-Men" - NOVO */}
         <div className="book-purchase-card">
           <img src="/xmen.jpg" alt="X-Men" className="book-cover" />
           <div className="book-details">
@@ -84,7 +76,6 @@ export default function Autor() {
         </div> 
 
 
-        {/* Card de Compra para "Doutor Estranho" */}
         <div className="book-purchase-card">
           <img src="/doutor.jfif" alt="Doutor Estranho" className="book-cover" />
           <div className="book-details">

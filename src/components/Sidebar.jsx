@@ -11,19 +11,17 @@ export default function Sidebar() {
        
       </div>
 
-
-       {/* NOVO: Espaço para a imagens */}
         <div className="spiderman-image-container">
           <img src="/hulk.webp" alt="Homem-Aranha" className="spiderman-sidebar-img" />
         </div>
 
 
        <div className="spiderman-image-container">
-          <img src="/aaaaa.webp" alt="Homem-Aranha" className="spiderman-sidebar-img" />
+          <img src="/capitaoamerica.webp" alt="Homem-Aranha" className="spiderman-sidebar-img" />
         </div>
 
        <div className="spiderman-image-container">
-          <img src="/pppp.webp" alt="Homem-Aranha" className="spiderman-sidebar-img" />
+          <img src="/homemaranha.webp" alt="Homem-Aranha" className="spiderman-sidebar-img" />
         </div>
 
         <nav>

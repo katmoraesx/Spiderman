@@ -7,7 +7,6 @@ export default function Sinopse() {
       
       <div className="sinopse-container">
         
-        {/* Card de compra do livro (primeiro elemento) */}
         <div className="book-card-container">
           <div className="book-card">
             <img src="/livroprincipal.jpg" alt="Capa do Livro do Homem-Aranha" className="book-cover" />
@@ -20,10 +19,7 @@ export default function Sinopse() {
             </div>
           </div>
         </div>
-
-        {/* Novo bloco para a descrição, com a propaganda acima */}
         <div className="description-and-promo-container">
-            {/* Bloco de propaganda (agora em cima da descrição) */}
             <div className="promo-box">
               <h2><i className="fas fa-exclamation-circle"></i> Aventura e Emoção!</h2>
               <ul>
@@ -34,7 +30,6 @@ export default function Sinopse() {
               <p>Uma jornada que vai te prender do início ao fim!</p>
             </div>
 
-            {/* Descrição do livro */}
             <div className="content-box">
               <p>
                 Em um mundo onde arranha-céus tocam as nuvens e o crime espreita nas sombras, um herói solitário se ergue. **Peter Parker**, o jovem fotógrafo da cidade de Nova York, vive uma vida dupla repleta de responsabilidades. Enquanto enfrenta o dilema de pagar o aluguel e ir para a aula, ele se transforma no amigável vizinho, o espetacular Homem-Aranha.

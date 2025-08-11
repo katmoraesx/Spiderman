@@ -6,11 +6,6 @@ export default function PublicoAlvo() {
         Uma aventura imperdível para todos que amam o universo Marvel e histórias inspiradoras.
       </p>
 
-      {/* Novo banner com a imagem dos heróis */}
-      <div className="superhero-banner">
-        <img src="/mmm.webp" alt="Heróis do Universo Marvel" className="superhero-image" />
-      </div>
-
       <div className="audience-grid">
         <div className="audience-card">
           <i className="fas fa-mask"></i>

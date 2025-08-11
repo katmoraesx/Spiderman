@@ -1,4 +1,4 @@
-/* Variaveis para padronizar cores e fontes */
+/* padrão de cores */
 $color-spiderman-red: #C40000;
 $color-spiderman-blue: #0A0A10;
 $color-spiderman-highlight: #FFD700;
@@ -6,7 +6,6 @@ $color-spiderman-text: #FFFFFF;
 $font-family-marvel: 'Roboto', 'Arial', sans-serif;
 $font-family-title: 'Bangers', cursive;
 
-/* Gradiente de fundo sutil para um efeito mais dinâmico */
 .sidebar {
   width: 250px;
   background: linear-gradient(180deg, $color-spiderman-blue 0%, lighten($color-spiderman-blue, 5%) 100%);
@@ -16,7 +15,7 @@ $font-family-title: 'Bangers', cursive;
   position: fixed;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; // Voltamos a usar space-between
+  justify-content: space-between; 
   align-items: center;
   box-shadow: 5px 0 20px rgba(0, 0, 0, 0.7);
   border-right: 5px solid $color-spiderman-red;
@@ -24,7 +23,6 @@ $font-family-title: 'Bangers', cursive;
 }
 
 
-/* Animação para o contorno da logo */
 @keyframes glow-border {
   0% { opacity: 0.5; }
   100% { opacity: 1; }
@@ -35,11 +33,10 @@ $font-family-title: 'Bangers', cursive;
   filter: drop-shadow(0 0 10px rgba($color-spiderman-red, 0.5));
 }
 
-/* Menu de navegação com bordas mais definidas */
 .sidebar nav {
   display: flex;
   flex-direction: column;
-  gap: 15px; // Voltamos ao espaçamento anterior
+  gap: 15px; 
   width: 90%;
 }
 
@@ -74,8 +71,6 @@ $font-family-title: 'Bangers', cursive;
 }
 
 
-
-/* Detalhe de teia no fundo, agora com um ajuste de margem */
 .spiderweb-detail {
   width: 100%;
   height: 200px;
@@ -94,21 +89,20 @@ $font-family-title: 'Bangers', cursive;
   100% { transform: translateY(-20px); }
 }
 
-/* NOVO: Estilo para o container da imagem do Homem-Aranha */
 .spiderman-image-container {
     width: 100%;
-    margin: 30px 0; /* Espaçamento vertical para a imagem */
+    margin: 30px 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .spiderman-sidebar-img {
-    width: 100px; /* Tamanho da imagem, você pode ajustar */
+    width: 100px; 
     height: auto;
     object-fit: contain;
     filter: drop-shadow(0 0 10px rgba($color-spiderman-highlight, 0.5));
-    animation: pulse 4s infinite alternate; /* Adiciona uma animação sutil */
+    animation: pulse 4s infinite alternate; 
 }
 
 @keyframes pulse {
