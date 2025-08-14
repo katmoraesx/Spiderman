@@ -1,20 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;700&display=swap');
+/* ===============================================
+  SASS - Dark & Minimalist Theme
+===============================================
+*/
 
-$color-spiderman-red: #C40000;
-$color-spiderman-blue: #0A0A10;
-$color-spiderman-highlight: #FFD700;
-$color-spiderman-text: #FFFFFF;
-$color-dark-gray: #333;
-$color-light-gray: #f0f0f0;
+// ===============================================
+//  01 - Ferramentas (Functions & Mixins)
+// ===============================================
 
-$font-comic-title: 'Bangers', cursive;
-$font-comic-body: 'Roboto', sans-serif;
+@mixin flex-center($direction: row) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin card-effect($shadow-color: rgba(0, 0, 0, 0.2)) {
+  box-shadow: 0 4px 15px $shadow-color;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  }
+}
+
+// ===============================================
+//  02 - Variáveis (Colors & Fonts)
+// ===============================================
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+
+// Paleta de Cores (Minimalista com toque sutil)
+$color-dark-theme-bg: #1A1A1A; // Preto
+$color-dark-theme-surface: #2C2C2C; // Cinza escuro para cards e elementos
+$color-dark-theme-text: #E0E0E0; // Texto claro
+$color-dark-theme-text-secondary: #B0B0B0; // Texto secundário
+$color-dark-theme-accent: #E33E43; // Vermelho sutil
+$color-dark-theme-border: #444444; // Borda de elementos
+
+// Tipografia
+$font-title: 'Playfair Display', serif;
+$font-body: 'Montserrat', sans-serif;
+
+// ===============================================
+//  03 - Base (Global Styles)
+// ===============================================
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
   padding: 0;
-  font-family: $font-comic-body;
-  background-color: $color-spiderman-blue;
+  font-family: $font-body;
+  background-color: $color-dark-theme-bg;
+  color: $color-dark-theme-text;
 }
 
 .container {
@@ -22,65 +63,226 @@ body {
   height: 100vh;
 }
 
-.sidebar {
-  width: 250px; 
-  background-color: $color-spiderman-blue;
-  height: 100vh;
-  padding: 30px 20px;
-  color: white;
-  position: fixed; 
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
-  border-right: 5px solid $color-spiderman-red;
-}
-
 main {
   flex: 1;
-  margin-left: 250px; 
+  margin-left: 250px;
   padding: 40px;
-  background: $color-light-gray;
+  background: $color-dark-theme-bg;
   min-height: 100vh;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
   overflow-y: auto;
 }
 
+// ===============================================
+//  04 - Layout (Sidebar & Main Content)
+// ===============================================
+
+.sidebar {
+  width: 250px;
+  background-color: $color-dark-theme-surface;
+  height: 100vh;
+  padding: 30px 20px;
+  color: $color-dark-theme-text;
+  position: fixed;
+  z-index: 1000;
+  @include flex-center(column);
+  justify-content: space-between;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+  border-right: 2px solid $color-dark-theme-accent;
+}
+
+// ===============================================
+//  05 - Componentes (Buttons, Cards, etc.)
+// ===============================================
+
 .page {
   padding: 30px;
-  background-color: #ffffff;
+  background-color: $color-dark-theme-surface;
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   position: relative;
   overflow: hidden;
 
   h1 {
-    font-family: $font-comic-title;
-    font-size: 3rem;
-    color: $color-spiderman-red;
-    text-shadow: 2px 2px $color-spiderman-blue;
+    font-family: $font-title;
+    font-size: 3.5rem;
+    color: $color-dark-theme-text;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-weight: 700;
   }
 }
 
-.content-box, .autor-container, .audience-grid, .Kelvin-card {
-  background-color: #fff;
+.content-box,
+.autor-container,
+.audience-grid,
+.Kelvin-card {
+  background-color: $color-dark-theme-surface;
   padding: 25px;
   border-radius: 8px;
-  border: 2px solid $color-dark-gray;
+  border: 1px solid $color-dark-theme-border;
+  @include card-effect();
 }
 
+.promo-box {
+  background-color: $color-dark-theme-accent;
+  color: $color-dark-theme-text;
+  padding: 30px;
+  border-radius: 10px;
+  border: 2px solid $color-dark-theme-border;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  max-width: 550px;
+  width: 100%;
+  text-align: center;
+  flex-shrink: 0;
+
+  h2 {
+    font-family: $font-title;
+    font-size: 2.2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+    color: $color-dark-theme-text;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      font-family: $font-body;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: $color-dark-theme-text;
+    }
+  }
+
+  p {
+    font-family: $font-body;
+    font-style: italic;
+    font-size: 1rem;
+    margin-top: 20px;
+    color: $color-dark-theme-text;
+  }
+}
+
+
+.buy-button {
+  background-color: $color-dark-theme-accent;
+  color: $color-dark-theme-text;
+  font-family: $font-body;
+  font-size: 1.2rem;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background-color: darken($color-dark-theme-accent, 10%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.buy-button-small {
+  background-color: $color-dark-theme-accent;
+  color: $color-dark-theme-text;
+  font-family: $font-body;
+  font-size: 1rem;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background-color: darken($color-dark-theme-accent, 10%);
+    transform: translateY(-2px);
+  }
+}
+
+// ===============================================
+//  06 - Páginas Específicas
+// ===============================================
+
 .sinopse-page {
+  .sinopse-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  .book-card-container {
+    flex-shrink: 0;
+    width: 300px;
+    padding: 20px;
+    background-color: $color-dark-theme-surface;
+    border-radius: 10px;
+    border: 2px solid $color-dark-theme-accent;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    @include card-effect();
+  }
+
+  .description-and-promo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 1;
+    align-items: center;
+  }
+
+  .book-cover {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 2px solid $color-dark-theme-border;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .book-title {
+    font-family: $font-title;
+    font-size: 1.8rem;
+    color: $color-dark-theme-accent;
+    margin: 0;
+    text-shadow: none;
+  }
+
+  .book-price {
+    font-family: $font-body;
+    font-size: 1.2rem;
+    color: $color-dark-theme-text;
+    @include flex-center();
+    gap: 5px;
+  }
+
+  .price-tag {
+    font-weight: 700;
+  }
+
+  .price-value {
+    color: $color-dark-theme-accent;
+    font-weight: 700;
+  }
+
   .fact-box {
     margin-top: 20px;
     padding: 15px;
-    background-color: $color-spiderman-red;
-    color: white;
+    background-color: $color-dark-theme-accent;
+    color: $color-dark-theme-text;
     border-radius: 8px;
     h3 {
-      font-family: $font-comic-title;
+      font-family: $font-title;
       margin: 0;
     }
   }
@@ -93,25 +295,71 @@ main {
     gap: 30px;
   }
   .autor-card {
+    display: flex;
+    flex-direction: column;
+    background-color: $color-dark-theme-surface;
     padding: 20px;
-    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 2px solid $color-dark-theme-border;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    @include card-effect();
+  }
+  .autor-image-container {
+    height: 500px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid $color-dark-theme-accent;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  .autor-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.5s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  .autor-content {
+    flex: 1;
     h2 {
-      color: $color-dark-gray;
+      color: $color-dark-theme-text;
+      font-family: $font-title;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
     }
     .nickname {
-      font-family: $font-comic-body;
-      font-size: 1rem;
-      color: gray;
+      font-family: $font-body;
+      font-size: 1.1rem;
+      color: $color-dark-theme-text-secondary;
+      font-style: italic;
+    }
+    p {
+      font-family: $font-body;
+      line-height: 1.6;
+      color: $color-dark-theme-text-secondary;
+    }
+    h3 {
+      font-family: $font-body;
+      font-size: 1.2rem;
+      color: $color-dark-theme-accent;
+      margin-top: 20px;
     }
     ul {
       list-style-type: none;
       padding: 0;
       li {
-        margin-bottom: 5px;
-      }
-      i {
-        margin-right: 10px;
-        color: $color-spiderman-red;
+        margin-bottom: 8px;
+        font-family: $font-body;
+        color: $color-dark-theme-text-secondary;
+        i {
+          margin-right: 10px;
+          color: $color-dark-theme-accent;
+        }
       }
     }
   }
@@ -120,7 +368,7 @@ main {
 .publico-alvo-page {
   .subtitle {
     font-size: 1.2rem;
-    color: $color-dark-gray;
+    color: $color-dark-theme-text-secondary;
     margin-bottom: 30px;
     text-align: center;
   }
@@ -132,11 +380,13 @@ main {
       text-align: center;
       i {
         font-size: 3rem;
-        color: $color-spiderman-red;
+        color: $color-dark-theme-accent;
         margin-bottom: 15px;
       }
       h2 {
         font-size: 1.5rem;
+        font-family: $font-body;
+        color: $color-dark-theme-text;
       }
     }
   }
@@ -144,8 +394,8 @@ main {
     text-align: center;
     margin-top: 30px;
     padding: 15px;
-    background-color: $color-spiderman-red;
-    color: $color-spiderman-text;
+    background-color: $color-dark-theme-accent;
+    color: $color-dark-theme-text;
     border-radius: 5px;
     span {
       font-weight: bold;
@@ -162,387 +412,67 @@ main {
     p {
       max-width: 600px;
       margin: 0 auto 20px;
+      color: $color-dark-theme-text;
     }
   }
   .spidey-icon-wrapper {
     margin-top: 20px;
     i {
       font-size: 4rem;
-      color: $color-spiderman-red;
+      color: $color-dark-theme-accent;
       transform: rotate(-20deg);
     }
     .spidey-greetings {
-      font-family: $font-comic-title;
-      color: $color-dark-gray;
+      font-family: $font-title;
+      color: $color-dark-theme-text;
       font-size: 2rem;
       margin-top: 10px;
     }
   }
 }
 
-.sinopse-container {
-  display: flex;
-  gap: 30px;
-  align-items: flex-start;
-}
-
-.book-card-container {
-  flex-shrink: 0; 
-  width: 300px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  border: 2px solid $color-spiderman-red;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  text-align: center;
-}
-
-.book-card {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.book-cover {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  border: 2px solid $color-dark-gray;
-  object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.book-details {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.book-title {
-  font-family: $font-comic-title;
-  font-size: 1.8rem;
-  color: $color-spiderman-red;
-  margin: 0;
-  text-shadow: 1px 1px $color-spiderman-blue;
-}
-
-.book-price {
-  font-family: $font-comic-body;
-  font-size: 1.2rem;
-  color: $color-dark-gray;
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  gap: 5px;
-}
-
-.price-tag {
-  font-weight: 700;
-}
-
-.price-value {
-  color: $color-spiderman-red;
-  font-weight: 700;
-}
-
-.buy-button {
-  background-color: $color-spiderman-red;
-  color: $color-spiderman-text;
-  font-family: $font-comic-title;
-  font-size: 1.2rem;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  
-  &:hover {
-    background-color: darken($color-spiderman-red, 10%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-  }
-  
-  i {
-    margin-left: 10px;
-  }
-}
-
-.autor-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr; 
-  gap: 30px;
-}
-
-.autor-card {
-  display: flex; 
-  flex-direction: column; 
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 10px;
-  border: 2px solid $color-dark-gray;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  overflow: hidden; 
-  position: relative; 
-  transition: transform 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  }
-}
-
-.autor-image-container {
-  width: 100%;
-  height: 500px; 
-  overflow: hidden;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  border: 2px solid $color-spiderman-red;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.autor-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  object-position: top; 
-  transition: transform 0.5s ease;
-  
-  &:hover {
-    transform: scale(1.1); 
-  }
-}
-
-.autor-content {
-  flex: 1; 
-  h2 {
-    color: $color-dark-gray;
-    font-family: $font-comic-title;
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-  .nickname {
-    font-family: $font-comic-body;
-    font-size: 1.1rem;
-    color: gray;
-    font-style: italic;
-  }
-  p {
-    font-family: $font-comic-body;
-    line-height: 1.6;
-    color: #555;
-  }
-  h3 {
-    font-family: $font-comic-body;
-    font-size: 1.2rem;
-    color: $color-spiderman-red;
-    margin-top: 20px;
-  }
-  ul {
-    list-style-type: none;
-    padding: 0;
-    li {
-      margin-bottom: 8px;
-      font-family: $font-comic-body;
-      color: #555;
-      i {
-        margin-right: 10px;
-        color: $color-spiderman-red;
-      }
-    }
-  }
-}
-
-
-.sinopse-container {
-  display: flex;
-  flex-direction: row; 
-  gap: 30px;
-  align-items: flex-start;
-}
-
-.promo-box {
-  background-color: $color-spiderman-red;
-  color: $color-spiderman-text;
-  padding: 30px;
-  border-radius: 10px;
-  border: 2px solid $color-spiderman-highlight; 
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-  max-width: 650px;
-  text-align: center;
-  flex-shrink: 0;
-  
-  h2 {
-    font-family: $font-comic-title;
-    font-size: 2rem;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    text-shadow: 2px 2px $color-spiderman-blue;
-    
-    i {
-      margin-right: 10px;
-    }
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    
-    li {
-      font-family: $font-comic-body;
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      
-      i {
-        margin-right: 10px;
-        color: $color-spiderman-highlight;
-      }
-    }
-  }
-  
-  p {
-    font-family: $font-comic-body;
-    font-style: italic;
-    font-size: 1rem;
-    margin-top: 20px;
-  }
-}
-
-.description-and-promo-container {
-    display: flex;
-    flex-direction: column; 
-    gap: 30px; 
-    flex: 1; 
-}
-
-.sinopse-container {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
-}
-
-
-
-
-
-
-.promo-box {
-    background-color: $color-spiderman-red;
-    color: $color-spiderman-text;
-    padding: 30px;
-    border-radius: 10px;
-    border: 2px solid $color-spiderman-highlight;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-    
-
-    max-width: 550px; 
-    width: 100%;
-    
-    text-align: center;
-    flex-shrink: 0;
-    
-}
-
-.content-box {
-    background-color: #fff;
-    padding: 25px;
-    border-radius: 8px;
-    border: 2px solid $color-dark-gray;
-    max-width: 650px;
-    width: 100%;
-}
-
-.description-and-promo-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    flex: 1; 
-    align-items: center; 
-}
-
-
-.sinopse-container {
-    display: flex;
-    gap: 40px;
-}
-
-
 .other-works-title {
   margin-top: 60px;
   margin-bottom: 30px;
-}
-
-.other-works-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 30px;
-  margin-top: 30px;
-}
-
-.book-purchase-card {
-  background-color: #f9f9f9;
-  padding: 15px;
-  border-radius: 10px;
-  border: 2px solid $color-spiderman-red;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-family: $font-title;
   text-align: center;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  }
-}
-
-.book-purchase-card .book-cover {
-  width: 100%;
-  height: 400px; 
-  object-fit: cover;
-  border-radius: 5px;
-  border: 1px solid $color-dark-gray;
-  margin-bottom: 15px;
-}
-
-.book-purchase-card .book-details {
-  h3 {
-    font-family: $font-comic-title;
-    font-size: 1.4rem;
-    color: $color-spiderman-red;
-    margin: 0 0 10px;
-    text-shadow: 1px 1px $color-spiderman-blue;
-  }
-}
-
-.buy-button-small {
-  background-color: $color-spiderman-red;
-  color: $color-spiderman-text;
-  font-family: $font-comic-title;
-  font-size: 1rem;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-
-  &:hover {
-    background-color: darken($color-spiderman-red, 10%);
-    transform: translateY(-2px);
-  }
+  font-size: 2.5rem;
+  color: $color-dark-theme-text;
 }
 
 .other-works-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
-  margin-top: 30px;
+}
+
+.book-purchase-card {
+  background-color: $color-dark-theme-surface;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid $color-dark-theme-accent;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  @include card-effect();
+}
+
+.book-purchase-card .book-cover {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid $color-dark-theme-border;
+  margin-bottom: 15px;
+}
+
+.book-purchase-card .book-details {
+  h3 {
+    font-family: $font-body;
+    font-size: 1.4rem;
+    color: $color-dark-theme-text;
+    margin: 0 0 10px;
+    font-weight: 700;
+  }
 }
 
 .superhero-banner {
@@ -551,19 +481,9 @@ main {
   margin-bottom: 40px;
   overflow: hidden;
   border-radius: 10px;
-  border: 4px solid $color-spiderman-highlight;
+  border: 4px solid $color-dark-theme-accent;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
   position: relative;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    box-shadow: inset 0 0 30px rgba($color-spiderman-blue, 0.5);
-  }
 }
 
 .superhero-image {
